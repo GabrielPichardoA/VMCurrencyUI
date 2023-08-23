@@ -4,7 +4,9 @@
 
 Run `npm install` on the root of VMCurrencyUI project to install node packages that could not be installed.
 
-IMPORTANT: ensure you have VMCurrencyAPI project up and running before opening the UI Project.
+## IMPORTANT
+
+Ensure you have VMCurrencyAPI project up and running before opening the UI Project.
 
 ## Development server
 
