@@ -1,0 +1,67 @@
+<div class="mx-3 mb-2">
+  <h2>Buy currencies</h2>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="formPurchase" (ngSubmit)="process()">
+
+        <div class="mb-2">
+          <label class="form-label">
+            UserId
+          </label>
+          <input type="number" formControlName="userId" class="form-control" placeholder="Please insert your UserId">
+          <div class="alert alert-danger mt-2" [hidden]="userId.valid || userId.pristine">
+            UserId is required
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">
+            Currency code
+          </label>
+          <select formControlName="currencyCode" class="form-control">
+            <option value="" disabled selected>Select an option...</option>
+            <option *ngFor="let option of options">{{ option }}</option>
+          </select>
+          <div class="alert alert-danger mt-2" [hidden]="currencyCode.valid || currencyCode.pristine">
+            Currency Code is required
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">
+            Amount
+          </label>
+          <input type="number" formControlName="amount" class="form-control" placeholder="Please insert the amount desired">
+          <div class="alert alert-danger mt-2" [hidden]="amount.valid || amount.pristine">
+            Amount is required
+          </div>
+        </div>
+
+        <button class="btn btn-primary" [disabled]="formPurchase.invalid">
+          Purchase
+        </button>
+      </form>
+      <div *ngIf="exchangeServiceResponse" class="alert alert-success mt-2">
+        <strong>Transaction Results: </strong>
+        <div>
+          <label><strong>Transaccion Id:</strong> {{exchangeServiceResponse.id}}</label>
+        </div>
+        <div>
+          <label><strong>User Id:</strong> {{exchangeServiceResponse.userId}}</label>
+        </div>
+        <div>
+          <label><strong>Amount:</strong> {{exchangeServiceResponse.amount}}</label>
+        </div>
+        <div>
+          <label><strong>Currency:</strong> {{exchangeServiceResponse.currencyCode}}</label>
+        </div>
+      </div>
+      <div *ngIf="error">
+        <div class="alert alert-danger mt-2">
+          {{ error }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+<h1>Purchase</h1>
+
+<div class="card">
+  <div *ngIf="(loading$ | async)" class="mx-5">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!(loading$ | async)">
+    <ul>
+      <div class="mb-4" *ngFor="let currency of currencies$ | async">
+        <app-currency [currencyInfo]="currency"></app-currency>
+      </div>
+    </ul>
+
+    <app-exchange-form></app-exchange-form>
+  </div>
+</div>
+
+
